@@ -1,6 +1,8 @@
 package snake;
 
-public class Snake 
+import engine.Script;
+
+public class Snake extends Script
 {
-    // TODO: Project for the future    
+    
 }
