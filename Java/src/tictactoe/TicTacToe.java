@@ -2,11 +2,10 @@ package tictactoe;
 
 // this is a try to "efficiently" implement a TicTacToe game
 // just for fun and to test out some bitwise operations
-// Not finished yet, and gonna rethink it, but for now discountinued
 public class TicTacToe 
 {
     //field = 0bT__BBB_BBB_BBB_AAA_AAA_AAA | T = turn | A = used field | B = player
-    private int game = 0b0__000_000_000_100_100_100;
+    private int game = 0b0__000_000_000_000_000_000;
 
     private final int winningGames[] = new int[] 
     {
@@ -28,6 +27,7 @@ public class TicTacToe
         
         System.out.println(ticTacToe.fieldAsString());
 
+        ticTacToe.makeMove(0);
 
         System.out.println(ticTacToe.fieldAsString());
 
@@ -107,16 +107,18 @@ public class TicTacToe
 
     public int checkWinner()
     {
+        // TODO: check if there is a winner
+
         int player1 = game & 0b0__111_111_111_111_111_111;
-        int player2 = ((~(game & 0b0__111_111_111_000_000_000)) & 0b0__111_111_111_111_111_111) | (game & 0b0__000_000_000_111_111_111);
+        int player2 = (~(game & 0b0__111_111_111_000_000_000) & 0b0__111_111_111_111_111_111) | (game & 0b0__000_000_000_111_111_111);
 
         System.out.println("player1: " + Integer.toBinaryString(player1));
         System.out.println("player2: " + Integer.toBinaryString(player2));
 
         for (int i = 0; i < winningGames.length; i++)
         {
-            if (( player1 &  winningGames[i]) == winningGames[i] ||
-                (~player2 & ~winningGames[i]) == winningGames[i])
+            if ((player1 & winningGames[i]) == winningGames[i] ||
+                (player2 & winningGames[i]) == winningGames[i])
             {
                 return turn();
             }
