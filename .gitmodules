@@ -1,0 +1,12 @@
+[submodule "dependencies/glew"]
+	path = dependencies/glew
+	url = https://github.com/nigels-com/glew
+	branch = master
+[submodule "dependencies/glfw"]
+	path = dependencies/glfw
+	url = https://github.com/glfw/glfw
+	branch = master
+[submodule "dependencies/imgui"]
+	path = dependencies/imgui
+	url = https://github.com/ocornut/imgui
+	branch = docking
